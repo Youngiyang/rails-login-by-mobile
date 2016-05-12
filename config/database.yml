@@ -1,0 +1,30 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  schema_search_path: public
+  su_username: postgres
+  su_password: postgres1234
+  pool: 5
+
+development:
+  <<: *default
+  host: localhost
+  database: common_development
+  username: postgres
+  password: postgres1234
+
+test:
+  <<: *default
+  host: localhost
+  database: common_test
+  username: postgres
+  password: postgres1234
+
+production:
+  <<: *default
+  host: <%= ENV['PLAYMALL_DATABASE_HOST'] %>
+  su_username: postgres
+  su_password: <%= ENV['SU_DATABASE_PASSWORD'] %>
+  database: common_development
+  username: youngi
+  password: <%= ENV['PLAYMALL_DATABASE_PASSWORD'] %>

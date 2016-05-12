@@ -1,0 +1,37 @@
+<h1>注册</h1>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@user) do |f| %>
+      <%= f.label "手机号" %>
+      <%= f.text_field :mobile %>
+      <input type="button" id="btn" value="免费获取验证码" />
+      <%= f.label "验证码" %>
+      <%= f.text_field :verify_code %>
+      <%= f.label "密码" %>
+      <%= f.password_field :password %>
+      <%= f.label "确认密码" %>
+      <%= f.password_field :password_confirmation %>
+      <%= f.submit "创建" %>
+    <% end %>
+  </div>
+</div>
+
+<script type="text/javascript">
+var wait=60;
+function time(o) {
+  if (wait == 0) {
+      o.removeAttribute("disabled");
+      o.value="免费获取验证码";
+      wait = 60;
+  } else {
+      o.setAttribute("disabled", true);
+      o.value="重新发送(" + wait + ")";
+      wait--;
+      setTimeout(function() {
+          time(o)
+      },
+      1000)
+  }
+}
+document.getElementById("btn").onclick=function(){time(this);}
+</script>
