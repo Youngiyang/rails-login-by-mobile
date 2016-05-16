@@ -33,5 +33,23 @@ function time(o) {
       1000)
   }
 }
-document.getElementById("btn").onclick=function(){time(this);}
+$('#btn').click(function(){
+  var mobile = document.getElementById("user_mobile")
+  if (mobile.value==0){
+    return false;
+  }
+  else{
+    time(this);
+    $.ajax({
+      type: 'POST',
+      url: '<%= send_code_path %>',
+      data: {
+        mobile: function(){
+          return $("#user_mobile").val()
+        }
+      }
+    })
+  }
+});
+// document.getElementById("btn").onclick=function(){time(this);}
 </script>

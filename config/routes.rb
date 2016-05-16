@@ -26,6 +26,8 @@ Rails.application.routes.draw do
   #     end
   #   end
   resource :users
+  post "send_code" => 'verify_code#send_code'
+
   # Example resource route with sub-resources:
   #   resources :products do
   #     resources :comments, :sales
