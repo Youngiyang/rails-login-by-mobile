@@ -14,7 +14,6 @@ module VerifyCodeHelper
     text = '【97gun】您的验证码是 #{code}'
     #智能匹配模板发送HTTP地址
     send_sms_uri = URI.parse('https://sms.yunpian.com/v2/sms/single_send.json')
-
     params['apikey'] = apikey
     #打印用户信息
     # response =  Net::HTTP.post_form(get_user_info_uri,params)

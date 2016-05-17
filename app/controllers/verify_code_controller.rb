@@ -10,6 +10,9 @@ class VerifyCodeController < ApplicationController
     end
   end
 
+  def activated?
+    !session[:verify_code][:auth_state] && Time.now < session[:verify_code][:expire_at]
+  end
   private
     def generate_code
       ((0...9).to_a.sample(3) + (0...9).to_a.sample(3)).join()
